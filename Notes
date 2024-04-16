@@ -1,2 +1,44 @@
-DeSerialisation -> process of converting a json string to an object
-Serialisation -> process for converting an object to a json string
+DeSerialization -> Process of converting json string to an object .
+Serialization -> Process of converting object to json string .
+
+
+Standard industry process is that controller should only deal with DTOs
+Controller -> Input DTO , Output -> DTO , Downstream (Service) -> DTO
+
+Service -> Input -> DTO , Output ->  DTO  , Downstream (Repository) -> Entity
+Service layer is the layer at which conversion from DTO to entity or entity to dto happens
+as conversion can be part of business logic
+
+Client -> Input -> DTO , Output -> DTO , everything is DTO.
+Client is called by service layer .
+
+Repository -> Input -> Entity ,Output -> Entity , DB saves entity only.
+
+as conversion can be part of business logic
+statistia (website for showing/rendering data based on plan you take). Three types of plan
+1. free    -> shows 3 tabs
+2. general -> shows 5 tabs
+3. pro     -> shows 10 tabs
+
+Standard industry process is that controller should only deal with DTOs
+
+Previously Controller layer was calling mapper and converting DTO to entity and entity to DTO.
+BUT now controller layer will deal with DTOs only and conversion will happen in service layer.
+
+Exception Handling
+
+We do not handle the exception by using throws or by try catch in controller or service layer
+
+WE create a seperate package for exception and write all the code logic to handle the exception there
+this process is called controlleradvice.
+
+when controller throws the exception it does it according to the configuration , which class is marked with
+@controlleradvice annotation.
+Controller class whenever wants to throw an exception , it follows controlleradvice.
+
+Need to create a response dto object class to respond back whenever an exception occurs.
+
+For Smaller Projects with few controller and fewer methods , it is ok to have single controller advise
+
+For Bigger Projects , with multiple controller and multiple methods , we need to have controller specific
+controller advice classes.
