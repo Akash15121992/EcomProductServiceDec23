@@ -42,3 +42,11 @@ For Smaller Projects with few controller and fewer methods , it is ok to have si
 
 For Bigger Projects , with multiple controller and multiple methods , we need to have controller specific
 controller advice classes.
+
+20/04/2024------------------------------------------------------------------------------------------------
+
+ProductService  (Interface) -> FakeStoreProductServiceImpl , ProductServiceImpl we have two implementing
+classes . We can multipe implementation of ProductService Interface like MongoDBPSImpl , AWSPsImpl
+
+We want here in ProductController -> ProductService  (Interface) specific bean called ProductServiceImpl class
+to be injected for that we have to use @qualifier annotation.
