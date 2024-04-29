@@ -1,7 +1,7 @@
 package dev.sandeep.EcomProductServiceDec23.client;
 
-import dev.sandeep.EcomProductServiceDec23.dto.FakeStoreCartResponseDTO;
-import dev.sandeep.EcomProductServiceDec23.dto.FakeStoreProductResponseDTO;
+import dev.sandeep.EcomProductServiceDec23.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
+import dev.sandeep.EcomProductServiceDec23.dto.fakeStoreDTOs.FakeStoreProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
