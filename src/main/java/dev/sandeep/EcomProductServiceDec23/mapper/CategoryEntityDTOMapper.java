@@ -14,7 +14,7 @@ public class CategoryEntityDTOMapper {
     public static CategoryResponseDTO convertCategoryEntityToCategoryResponseDTO(Category category){
         //call to productentitydto mapper to convert product entity to product response dto
         CategoryResponseDTO categoryResponseDTO = new CategoryResponseDTO();
-        //categoryResponseDTO.setCategoryId(category.getId());
+        categoryResponseDTO.setCategoryId(category.getId());
         categoryResponseDTO.setCategoryName(category.getName());
         List<ProductResponseDTO> productResponseDTOS = new ArrayList<>();
         if(!(category.getProducts() == null || category.getProducts().isEmpty())){
