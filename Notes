@@ -50,3 +50,35 @@ classes . We can multipe implementation of ProductService Interface like MongoDB
 
 We want here in ProductController -> ProductService  (Interface) specific bean called ProductServiceImpl class
 to be injected for that we have to use @qualifier annotation.
+
+27/04/2024--------------------------------------------------------------
+CID     ProductId       Price
+1           1           10
+2           2           20
+1           3           30
+1           4           40
+
+total price for all the products for categoryID 1 -> 80
+
+localhost:8080/category/price/id -> fetches all products for a given category id, and returns the sum of prices
+
+@Before -> used for setting up test environment
+ -- Before runs only once when we start executing the tests in the class.
+
+@After -> used for destroying test environment
+ -- After runs only once after executing the all the tests in the class.
+
+@BeforeEach -> used for setting up for all test case
+ -- BeforeEach before every test case
+
+@AfterEach -> used for destroying for all test case
+ -- AfterEach will run after every test case.
+
+ ex
+
+ We have 3 test cases in a class . Exceution of all annotation how many times.
+
+ @Before         1
+ @After          1
+ @BeforeEach     3
+ @AfterEach      3
