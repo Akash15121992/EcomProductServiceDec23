@@ -3,6 +3,8 @@ package dev.sandeep.EcomProductServiceDec23.controller;
 import dev.sandeep.EcomProductServiceDec23.dto.CreateProductRequestDTO;
 import dev.sandeep.EcomProductServiceDec23.dto.ProductResponseDTO;
 import dev.sandeep.EcomProductServiceDec23.entity.Product;
+import dev.sandeep.EcomProductServiceDec23.exception.CategoryNotFoundException;
+import dev.sandeep.EcomProductServiceDec23.exception.InvalidInputException;
 import dev.sandeep.EcomProductServiceDec23.service.ProductService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +17,10 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ProductControllerTest {
 
@@ -178,5 +183,17 @@ public class ProductControllerTest {
 
         //Assert
         Assertions.assertEquals(mockProducts,allProducts.getBody());
+    }
+
+    @Test
+    public void testInvalidInputExceptionThrown(){
+        //Arrange
+        UUID nullId = null;
+
+        InvalidInputException exception = Assertions.assertThrows(InvalidInputException.class, () -> {
+            productController.getProductById(nullId);
+        });
+
+        //Assertions.assertEquals("Input is not correct as the id is negative and id can't be negative. Please re-enter with correct id", exception.getMessage());
     }
 }
