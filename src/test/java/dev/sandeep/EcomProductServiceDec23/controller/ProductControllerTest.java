@@ -153,10 +153,11 @@ public class ProductControllerTest {
         Mockito.when(productService.getProduct(productId)).thenReturn(productResponseDTO);
         //Act
 
-        ResponseEntity<ProductResponseDTO> productResponseDTOResponseEntity =
-                productController.getProductById(productId);
+        //ResponseEntity<ProductResponseDTO> productResponseDTOResponseEntity =
+        ProductResponseDTO productById = productController.getProductById(productId);
         //Assert
-        Assertions.assertEquals(productResponseDTO,productResponseDTOResponseEntity.getBody());
+        //Assertions.assertEquals(productResponseDTO,productResponseDTOResponseEntity.getBody());
+        Assertions.assertEquals(productResponseDTO,productById);
     }
 
     @Test

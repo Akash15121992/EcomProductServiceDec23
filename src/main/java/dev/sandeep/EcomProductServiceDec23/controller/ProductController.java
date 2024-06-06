@@ -7,6 +7,7 @@ import dev.sandeep.EcomProductServiceDec23.exception.InvalidInputException;
 import dev.sandeep.EcomProductServiceDec23.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,6 @@ public class ProductController {
     @Autowired
     @Qualifier("productService")
     private ProductService productService; // field injection
-
     @GetMapping
     public ResponseEntity<List<ProductResponseDTO>> getAllProducts(){
         /*List<FakeStoreProductResponseDTO> products = productService.getAllProducts();*/
@@ -28,16 +28,16 @@ public class ProductController {
         return ResponseEntity.ok(products);
 
     }
-
+    @Cacheable(value = "product",key = "#id")
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable("id") UUID id){
+    public ProductResponseDTO getProductById(@PathVariable("id") UUID id){
         if(id == null){
             throw new InvalidInputException("Input is not correct as the id " +
                     "is negative and id can't be negative. Please re enter with correct id");
         }
         /*FakeStoreProductResponseDTO product = productService.getProduct(id);*/
         ProductResponseDTO product = productService.getProduct(id);
-        return ResponseEntity.ok(product);
+        return product;
     }
 
     @PostMapping

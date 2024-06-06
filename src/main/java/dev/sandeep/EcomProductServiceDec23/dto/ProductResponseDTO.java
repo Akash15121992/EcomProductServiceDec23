@@ -4,11 +4,12 @@ import dev.sandeep.EcomProductServiceDec23.entity.Category;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class ProductResponseDTO {
+public class ProductResponseDTO implements Serializable {
     //private int productId;
     private UUID productId;
     private String title;

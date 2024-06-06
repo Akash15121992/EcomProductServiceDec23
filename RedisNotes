@@ -1,0 +1,9 @@
+1. Add @EnableCaching in the main class
+2. Add @Cacheable annotation which we want to cache
+
+@Cacheable(value = "product",key = "#id")
+
+value ="product" -> giving name to value column in redis ,key name IS id.
+
+1st -> 170ms ->17/18ms -> any keys || DB
+make calls -> DB logs -> redis cache is not working
